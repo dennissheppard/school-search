@@ -7,7 +7,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc --watch",
     "live": "live-server --open=src",
-    "start": "concurrently \"npm run tsc:w\" \"npm run live\" ",
+    "start": "concurrently \"npm run live\" ",
     "typings": "typings"
   },
   "license": "ISC",

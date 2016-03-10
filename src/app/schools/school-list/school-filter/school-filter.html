@@ -1,0 +1,10 @@
+<li class="sidebar-search">
+    <div class="input-group custom-search-form">
+        <input [(ngModel)]="searchText" type="text" class="form-control" placeholder="Search..." (onkeyup)="searchInputChange($event)">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button" (click)="searchSchools()">
+                <i class="fa fa-search"></i>
+            </button>
+        </span>
+    </div>
+</li>

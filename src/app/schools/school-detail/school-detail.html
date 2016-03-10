@@ -1,0 +1,158 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">{{ selectedSchool.name }}</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-ticket fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge" *ngIf="selectedSchool && selectedSchool.details && selectedSchool.details.details">
+                            {{selectedSchool.details.details[0].admission_rate ? selectedSchool.details.details[0].admission_rate * 1 : 0}}%
+                        </div>
+                        <div>Admission Rate</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-dollar fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">{{ selectedSchool.total_costs_out_of_state | number }}</div>
+                        <div>Total Cost</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-calendar fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">X</div>
+                        <div>Days Until Deadline</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-group fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">{{selectedSchool.population | number}}</div>
+                        <div>Student Population</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-map fa-fw"></i> General info
+
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="pull-left">
+                    <img [src]="selectedSchool ? selectedSchool.photo_url : ''" />
+                </div>
+                <div class="text-center">
+                    {{selectedSchool.admissions_address}}<br>
+                    {{selectedSchool.city}}, {{selectedSchool.state}}
+                    {{selectedSchool.zipcode}}
+                </div>
+                <br>
+                <br>
+                <div class="text-center">
+                    {{selectedSchool.home_url}}
+                </div>
+
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+
+
+    </div>
+    <!-- /.col-lg-8 -->
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-tasks fa-fw"></i> Details
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="list-group" *ngIf="selectedSchool">
+                    <a class="list-group-item" *ngFor="#detail of schoolDetails">
+                        <i class="fa fa-check-square-o fa-fw"></i> {{detail.key}}
+                                    <span class="pull-right text-muted small"><em>{{detail.value ? detail.value : '?'}}</em>
+                                    </span>
+                    </a>
+
+
+                </div>
+                <!-- /.list-group -->
+                <a href="#" class="btn btn-default btn-block">View All Alerts</a>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-4 -->
+</div>
+<!-- /.row -->
