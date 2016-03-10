@@ -18,6 +18,7 @@ export class SchoolListComponent implements OnInit{
         details: {},
         id: -1
     };
+    featuredSchool: number = 12;
     schools: School[] = [];
     @Output() onSelectedSchool = new EventEmitter<School>();
 
@@ -41,8 +42,14 @@ export class SchoolListComponent implements OnInit{
         .subscribe(
             (schools: School[]) => {
                 this.schools = schools;
-                this.schoolService.setSelectedSchool(this.schools[0]);
-                this.selectedSchool = this.schools[0];
+                if(schools.length > 0){
+                    this.schoolService.setSelectedSchool(this.schools[this.featuredSchool]);
+                    this.selectedSchool = this.schools[this.featuredSchool];
+                } else{
+                    this.selectedSchool = {};
+                }
+                this.featuredSchool = 0;
+
             }
         );
     }
