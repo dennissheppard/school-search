@@ -10,7 +10,12 @@
     <detail-callout [config]="admissionData"></detail-callout>
     <detail-callout [config]="costData"></detail-callout>
     <detail-callout [config]="deadlineData"></detail-callout>
-    <detail-callout [config]="populationData"></detail-callout>
+    <detail-callout [config]="{
+            dataPoint: selectedSchool.population ? selectedSchool.population : '',
+            iconClass: 'fa-group',
+            dataLabel: 'Student Population',
+            panelColor: 'panel-red'
+    }"></detail-callout>
 
 </div>
 <!-- /.row -->

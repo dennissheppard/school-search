@@ -88,12 +88,12 @@ export class SchoolDetailComponent{
             dataLabel: 'Days Until Deadline',
             panelColor: 'panel-yellow'
         }
-        this.populationData = {
-            dataPoint: new DecimalPipe().transform(this.selectedSchool.population),
-            iconClass: 'fa-group',
-            dataLabel: 'Student Population',
-            panelColor: 'panel-red'
-        }
+        //this.populationData = {
+        //    dataPoint: new DecimalPipe().transform(this.selectedSchool.population),
+        //    iconClass: 'fa-group',
+        //    dataLabel: 'Student Population',
+        //    panelColor: 'panel-red'
+        //}
     }
 
 
