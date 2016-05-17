@@ -1,13 +1,12 @@
-import { Component, OnInit, EventEmitter, Output } from 'angular2/core';
-import { CORE_DIRECTIVES } from 'angular2/common';
-import { RouterLink } from 'angular2/router';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { CORE_DIRECTIVES } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { SchoolService, School } from '../services/school.service';
 import { FilterComponent } from './school-filter/filter.component';
 
 @Component({
     selector: 'school-list',
-    templateUrl: 'app/schools/school-list/school-list.html',
+    templateUrl: 'src/app/schools/school-list/school-list.html',
     providers: [],
     directives: [FilterComponent]
 })
@@ -46,7 +45,7 @@ export class SchoolListComponent implements OnInit{
                     this.schoolService.setSelectedSchool(this.schools[this.featuredSchool]);
                     this.selectedSchool = this.schools[this.featuredSchool];
                 } else{
-                    this.selectedSchool = {};
+                    delete this.selectedSchool;
                 }
                 this.featuredSchool = 0;
 

@@ -1,6 +1,5 @@
-import { Component, Input, EventEmitter } from 'angular2/core';
-import { CORE_DIRECTIVES, DecimalPipe } from 'angular2/common';
-import { RouterLink } from 'angular2/router';
+import { Component, Input, EventEmitter } from '@angular/core';
+import { CORE_DIRECTIVES, DecimalPipe } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { SchoolService, School } from '../services/school.service';
 import {Subscription} from "rxjs/Subscription";
@@ -8,7 +7,7 @@ import { DetailCalloutComponent } from './detail-callout/DetailCallout.component
 
 @Component({
     selector: 'school-detail',
-    templateUrl: 'app/schools/school-detail/school-detail.html',
+    templateUrl: 'src/app/schools/school-detail/school-detail.html',
     providers: [DecimalPipe],
     directives: [DetailCalloutComponent]
 })
@@ -16,7 +15,8 @@ export class SchoolDetailComponent{
     selectedSchool: School = {
         name: '',
         total_costs_out_of_state: 0,
-        id: -1
+        id: -1,
+        details: {}
     };
     subscription: Subscription;
     schoolDetails: any[] = [];
@@ -73,20 +73,23 @@ export class SchoolDetailComponent{
                         : 0 + '%',
             iconClass: 'fa-ticket',
             dataLabel: 'Admission Rate',
-            panelColor: 'panel-primary'
+            panelColor: 'panel-primary',
+            secondColor: 'secondColor'
         }
 
         this.costData = {
             dataPoint: new DecimalPipe().transform(this.selectedSchool.total_costs_out_of_state),
             iconClass: 'fa-dollar',
             dataLabel: 'Admission Cost',
-            panelColor: 'panel-green'
+            panelColor: 'panel-green',
+            secondColor: 'secondColor'
         }
         this.deadlineData = {
             dataPoint: 12,
             iconClass: 'fa-calendar',
             dataLabel: 'Days Until Deadline',
-            panelColor: 'panel-yellow'
+            panelColor: 'panel-yellow',
+            secondColor: 'secondColor'
         }
         //this.populationData = {
         //    dataPoint: new DecimalPipe().transform(this.selectedSchool.population),

@@ -1,6 +1,6 @@
 # Intro to Angular 2
 
-The goal of this
+This is a sample/first try app with Angular 2.  It's a concept re-design of NextTier Education's school search page.
 
 ##
 
@@ -11,5 +11,3 @@ The goal of this
 
 1. Run `npm start` in a separate terminal window to start the server and launch the app
 
-We're hard at work on a new Angular 2 hands-on/instructor-led training course 
-as well as a video course that will be released in 2016!

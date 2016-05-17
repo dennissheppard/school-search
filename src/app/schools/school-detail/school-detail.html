@@ -14,7 +14,8 @@
             dataPoint: selectedSchool.population ? selectedSchool.population : '',
             iconClass: 'fa-group',
             dataLabel: 'Student Population',
-            panelColor: 'panel-red'
+            panelColor: 'panel-red',
+            secondColor: 'secondColor'
     }"></detail-callout>
 
 </div>
@@ -59,7 +60,7 @@
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="list-group" *ngIf="selectedSchool">
-                    <a class="list-group-item" *ngFor="#detail of schoolDetails">
+                    <a class="list-group-item" *ngFor="let detail of schoolDetails">
                         <i class="fa fa-check-square-o fa-fw"></i> {{detail.key}}
                                     <span class="pull-right text-muted small"><em>{{detail.value ? detail.value : '?'}}</em>
                                     </span>
