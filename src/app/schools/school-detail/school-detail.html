@@ -15,7 +15,7 @@
                         <i class="fa fa-ticket fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">
+                        <div class="huge" *ngIf="selectedSchool && selectedSchool.details">
                             {{selectedSchool.details.details[0].admission_rate}}%
                         </div>
                         <div>Admission Rate</div>
