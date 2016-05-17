@@ -2,8 +2,10 @@ import { Component, Input, EventEmitter } from '@angular/core';
 import { CORE_DIRECTIVES, DecimalPipe } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { SchoolService, School } from '../services/school.service';
-import {Subscription} from "rxjs/Subscription";
+import { Subscription } from "rxjs/Subscription";
 import { DetailCalloutComponent } from './detail-callout/DetailCallout.component';
+import { ICallout } from '../services/ICallout';
+import {Callout} from "../services/callout";
 
 @Component({
     selector: 'school-detail',
@@ -20,10 +22,10 @@ export class SchoolDetailComponent{
     };
     subscription: Subscription;
     schoolDetails: any[] = [];
-    admissionData: any = {};
-    costData: any = {};
-    deadlineData: any = {};
-    populationData: any = {};
+    admissionData: Callout = new Callout();
+    costData: Callout = new Callout();
+    deadlineData: Callout = new Callout();
+    populationData: Callout = new Callout();
 
 
     constructor(private schoolService: SchoolService){
@@ -73,29 +75,26 @@ export class SchoolDetailComponent{
                         : 0 + '%',
             iconClass: 'fa-ticket',
             dataLabel: 'Admission Rate',
-            panelColor: 'panel-primary',
-            secondColor: 'secondColor'
+            panelClass: 'panel-primary'
         }
 
         this.costData = {
             dataPoint: new DecimalPipe().transform(this.selectedSchool.total_costs_out_of_state),
             iconClass: 'fa-dollar',
             dataLabel: 'Admission Cost',
-            panelColor: 'panel-green',
-            secondColor: 'secondColor'
+            panelClass: 'panel-green'
         }
         this.deadlineData = {
-            dataPoint: 12,
+            dataPoint: '12',
             iconClass: 'fa-calendar',
             dataLabel: 'Days Until Deadline',
-            panelColor: 'panel-yellow',
-            secondColor: 'secondColor'
+            panelClass: 'panel-yellow'
         }
         //this.populationData = {
         //    dataPoint: new DecimalPipe().transform(this.selectedSchool.population),
         //    iconClass: 'fa-group',
         //    dataLabel: 'Student Population',
-        //    panelColor: 'panel-red'
+        //    panelClass: 'panel-red'
         //}
     }
 

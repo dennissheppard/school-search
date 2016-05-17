@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Callout } from "../../services/Callout";
 
 @Component({
     selector: 'detail-callout',
@@ -6,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 
 export class DetailCalloutComponent{
-    @Input() config: any;
+    @Input() config: Callout;
     constructor(){
 
     }
