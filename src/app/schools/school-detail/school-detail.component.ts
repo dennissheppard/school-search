@@ -3,20 +3,18 @@ import { CORE_DIRECTIVES, DecimalPipe } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { SchoolService, School } from '../services/school.service';
 import {Subscription} from "rxjs/Subscription";
-import { DetailCalloutComponent } from './detail-callout/DetailCallout.component';
 
 @Component({
     selector: 'school-detail',
     templateUrl: 'src/app/schools/school-detail/school-detail.html',
-    providers: [DecimalPipe],
-    directives: [DetailCalloutComponent]
+    providers: [DecimalPipe]
 })
 export class SchoolDetailComponent{
     selectedSchool: School = {
         name: '',
         total_costs_out_of_state: 0,
         id: -1,
-        details: {}
+        details: ''
     };
     subscription: Subscription;
     schoolDetails: any[] = [];
@@ -34,7 +32,7 @@ export class SchoolDetailComponent{
 
     setupSelectedSchoolListener(){
         this.subscription = this.schoolService.schoolChanged$.subscribe(
-            (school: School) => {
+            school => {
                 this.selectedSchool = school;
                 this.getSchoolDetails(school.id);
 
@@ -44,12 +42,10 @@ export class SchoolDetailComponent{
     getSchoolDetails(id: number){
         this.schoolService.getSchoolDetails(id)
             .subscribe(
-                (schoolDetails: any) => {
+                schoolDetails => {
                     this.selectedSchool.details = schoolDetails;
                     this.schoolService.selectedSchool = this.selectedSchool;
-                    this.fillDetailsArray(this.selectedSchool.details);
-
-                    this.setupCalloutData();
+                    this.fillDetailsArray(this.selectedSchool.details);                    
                 }
             );
     }
@@ -66,38 +62,7 @@ export class SchoolDetailComponent{
         }
     }
 
-    setupCalloutData(){
-        this.admissionData = {
-            dataPoint: this.selectedSchool.details.details[0].admission_rate
-                        ? this.selectedSchool.details.details[0].admission_rate * 1 + '%'
-                        : 0 + '%',
-            iconClass: 'fa-ticket',
-            dataLabel: 'Admission Rate',
-            panelColor: 'panel-primary',
-            secondColor: 'secondColor'
-        }
-
-        this.costData = {
-            dataPoint: new DecimalPipe().transform(this.selectedSchool.total_costs_out_of_state),
-            iconClass: 'fa-dollar',
-            dataLabel: 'Admission Cost',
-            panelColor: 'panel-green',
-            secondColor: 'secondColor'
-        }
-        this.deadlineData = {
-            dataPoint: 12,
-            iconClass: 'fa-calendar',
-            dataLabel: 'Days Until Deadline',
-            panelColor: 'panel-yellow',
-            secondColor: 'secondColor'
-        }
-        //this.populationData = {
-        //    dataPoint: new DecimalPipe().transform(this.selectedSchool.population),
-        //    iconClass: 'fa-group',
-        //    dataLabel: 'Student Population',
-        //    panelColor: 'panel-red'
-        //}
-    }
+    
 
 
 }

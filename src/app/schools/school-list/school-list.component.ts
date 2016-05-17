@@ -14,8 +14,8 @@ export class SchoolListComponent implements OnInit{
     selectedSchool: School = {
         name: '',
         total_costs_out_of_state: 0,
-        details: {},
-        id: -1
+        id: -1,
+        details: ''
     };
     featuredSchool: number = 12;
     schools: School[] = [];
