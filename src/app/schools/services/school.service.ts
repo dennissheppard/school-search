@@ -1,6 +1,5 @@
-import { Injectable } from 'angular2/core';
-import { Http, Response } from 'angular2/http';
-import { Observable } from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
 import { ConstantsService } from '../../shared/services/constants.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -11,6 +10,7 @@ export interface School{
     "name": String;
     "total_costs_out_of_state": Number;
     "id": number;
+    "details": any;
 }
 
 @Injectable()
@@ -37,8 +37,8 @@ export class SchoolService {
         return this.http.get(this.constants.serviceUrl + 'institutions/?search=' + searchTerm)
             .map(
                 (response: Response) => <School[]>response.json().results
-            )
-            .catch(this.handleError);
+            );
+            
     }
 
     handleError(error: any){
@@ -49,8 +49,7 @@ export class SchoolService {
         return this.http.get(this.constants.serviceUrl + 'institutions/' + id)
             .map(
                 (response: Response) => <any>response.json()
-            )
-            .catch(this.handleError);
+            );
     }
 
 

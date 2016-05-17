@@ -1,12 +1,11 @@
-import { Component, EventEmitter, Output } from 'angular2/core';
-import { CORE_DIRECTIVES } from 'angular2/common';
-import { RouterLink } from 'angular2/router';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { CORE_DIRECTIVES } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 
 
 @Component({
     selector: 'school-filter',
-    templateUrl: 'app/schools/school-list/school-filter/school-filter.html',
+    templateUrl: 'src/app/schools/school-list/school-filter/school-filter.html',
     providers: [],
     directives: []
 })
