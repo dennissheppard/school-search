@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import { ConstantsService } from '../../shared/services/constants.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/Rx';
 import 'rxjs/add/operator/do';
 import {Subject} from "rxjs/Subject";
 
@@ -16,6 +17,7 @@ export interface School{
 @Injectable()
 export class SchoolService {
     selectedSchool: School;
+    schoolList: Array<School>;
 
     // Observable string sources
     private _onSelectedSchoolChange = new Subject<School>();
@@ -36,9 +38,18 @@ export class SchoolService {
     getSchools(searchTerm: string = ''){
         return this.http.get(this.constants.serviceUrl + 'institutions/?search=' + searchTerm)
             .map(
-                (response: Response) => <School[]>response.json().results
-            );
-            
+                (response: Response) =>{
+                    this.schoolList = response.json().results;
+                    let nextPageUrl = response.json().next;
+                    return nextPageUrl;
+                })
+            .flatMap((nextPageUrl: string) => {
+                return this.http.get(nextPageUrl);
+            })
+            .map((res: Response) => {
+                this.schoolList = this.schoolList.concat(res.json().results);
+                return this.schoolList;
+            });
     }
 
     handleError(error: any){
@@ -47,12 +58,10 @@ export class SchoolService {
 
     getSchoolDetails(id: number){
         return this.http.get(this.constants.serviceUrl + 'institutions/' + id)
-            .map(
-                (response: Response) => <any>response.json()
+            .map((response: Response) => {
+                    let schoolDetail: School = response.json();
+                    return schoolDetail;
+                }
             );
     }
-
-
-
-
 }
