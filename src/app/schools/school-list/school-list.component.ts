@@ -33,6 +33,7 @@ export class SchoolListComponent implements OnInit{
     setSelectedSchool(school: School){
         this.selectedSchool = school;
         this.schoolService.setSelectedSchool(school);
+        this.onSelectedSchool.emit(this.selectedSchool);
     }
 
     //private methods
@@ -44,6 +45,7 @@ export class SchoolListComponent implements OnInit{
                 if(schools.length > 0){
                     this.schoolService.setSelectedSchool(this.schools[this.featuredSchool]);
                     this.selectedSchool = this.schools[this.featuredSchool];
+                    this.onSelectedSchool.emit(this.selectedSchool);
                 } else{
                     delete this.selectedSchool;
                 }

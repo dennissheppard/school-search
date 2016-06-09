@@ -224,12 +224,12 @@
             <!-- /.dropdown -->
         </ul>
         <!-- /.navbar-top-links -->
-        <school-list></school-list>
+        <school-list (onSelectedSchool)="getSchoolDetails($event)"></school-list>
         <!-- /.navbar-static-side -->
     </nav>
 
     <div id="page-wrapper">
-        <school-detail></school-detail>
+        <school-detail [selectedSchool]="selectedSchool" [schoolDetails]="schoolDetails" [calloutData]="calloutData"></school-detail>
     </div>
     <!-- /#page-wrapper -->
 

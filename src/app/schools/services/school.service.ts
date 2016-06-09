@@ -12,6 +12,7 @@ export interface School{
     "total_costs_out_of_state": Number;
     "id": number;
     "details": any;
+    "population": any;
 }
 
 @Injectable()
