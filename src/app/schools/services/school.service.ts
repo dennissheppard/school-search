@@ -41,16 +41,8 @@ export class SchoolService {
             .map(
                 (response: Response) =>{
                     this.schoolList = response.json().results;
-                    let nextPageUrl = response.json().next;
-                    return nextPageUrl;
-                })
-            .flatMap((nextPageUrl: string) => {
-                return this.http.get(nextPageUrl);
-            })
-            .map((res: Response) => {
-                this.schoolList = this.schoolList.concat(res.json().results);
-                return this.schoolList;
-            });
+                    return this.schoolList;
+                });
     }
 
     handleError(error: any){

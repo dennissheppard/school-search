@@ -17,12 +17,6 @@ export class FilterComponent{
     constructor(){
     }
 
-    searchInputChange(event: any){
-        if(event.keycode === 13){
-            this.searchSchools();
-        }
-    }
-
     searchSchools(){
         this.onSearch.emit(this.searchText);
     }
