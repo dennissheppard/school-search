@@ -19,7 +19,7 @@ export class SchoolListComponent implements OnInit{
     };
     featuredSchool: number = 12;
     schools: School[] = [];
-    @Output() onSelectedSchool = new EventEmitter<School>();
+    
 
     constructor(private schoolService: SchoolService){
 

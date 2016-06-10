@@ -26,22 +26,14 @@ export class SchoolDetailComponent{
     costData: Callout = new Callout();
     deadlineData: Callout = new Callout();
     populationData: Callout = new Callout();
+    
 
 
     constructor(private schoolService: SchoolService){
-        this.setupSelectedSchoolListener();
+
     }
 
 
-
-    setupSelectedSchoolListener(){
-        this.subscription = this.schoolService.schoolChanged$.subscribe(
-            (school: School) => {
-                this.selectedSchool = school;
-                this.getSchoolDetails(school.id);
-
-            });
-    }
 
     getSchoolDetails(id: number){
         this.schoolService.getSchoolDetails(id)
