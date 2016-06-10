@@ -7,16 +7,16 @@
 <!-- /.row -->
 <div class="row">
 
-    <detail-callout [config]="admissionData"></detail-callout>
-    <detail-callout [config]="costData"></detail-callout>
-    <detail-callout [config]="deadlineData"></detail-callout>
-    <detail-callout [config]="{
-            dataPoint: selectedSchool.population ? selectedSchool.population : '',
-            iconClass: 'fa-group',
-            dataLabel: 'Student Population',
-            panelColor: 'panel-red',
-            secondColor: 'secondColor'
-    }"></detail-callout>
+    <detail-callout [config]="selectedSchool.admissionData"></detail-callout>
+    <detail-callout [config]="selectedSchool.costData"></detail-callout>
+    <detail-callout [config]="selectedSchool.deadlineData"></detail-callout>
+    <!--<detail-callout [config]="{-->
+            <!--dataPoint: selectedSchool.population ? selectedSchool.population : '',-->
+            <!--iconClass: 'fa-group',-->
+            <!--dataLabel: 'Student Population',-->
+            <!--panelColor: 'panel-red',-->
+            <!--secondColor: 'secondColor'-->
+    <!--}"></detail-callout>-->
 
 </div>
 <!-- /.row -->

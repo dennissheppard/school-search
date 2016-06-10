@@ -11,18 +11,12 @@ import { FilterComponent } from './school-filter/filter.component';
     directives: [FilterComponent]
 })
 export class SchoolListComponent implements OnInit{
-    selectedSchool: School = {
-        name: '',
-        total_costs_out_of_state: 0,
-        details: {},
-        id: -1
-    };
     featuredSchool: number = 12;
     schools: School[] = [];
-    
+    selectedSchool: any;
 
     constructor(private schoolService: SchoolService){
-
+        this.selectedSchool = this.schoolService.selectedSchool;
     }
 
     ngOnInit(){
@@ -30,8 +24,7 @@ export class SchoolListComponent implements OnInit{
     }
 
     //DOM methods
-    setSelectedSchool(school: School){
-        this.selectedSchool = school;
+    setSelectedSchool(school: any){
         this.schoolService.setSelectedSchool(school);
     }
 
@@ -42,10 +35,9 @@ export class SchoolListComponent implements OnInit{
             (schools: School[]) => {
                 this.schools = schools;
                 if(schools.length > 0){
-                    this.schoolService.setSelectedSchool(this.schools[this.featuredSchool]);
-                    this.selectedSchool = this.schools[this.featuredSchool];
+                    this.schoolService.setSelectedSchool(this.schools[this.featuredSchool]);                    
                 } else{
-                    delete this.selectedSchool;
+                    delete this.schoolService.selectedSchool;
                 }
                 this.featuredSchool = 0;
 
